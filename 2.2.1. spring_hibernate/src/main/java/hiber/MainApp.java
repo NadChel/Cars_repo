@@ -17,8 +17,8 @@ public class MainApp {
 //      userService.setCarById(3, new Car("Bantam Model 60 Roadster", 1938));
 //      userService.setCarById(4, new Car("Daimler Motorized Carriage", 1886));
 //      userService.setCarById(5, new Car("Some Boring Car", 1234));
-         System.out.println(userService.getUserByCarSeries(1886).get(0).getFirstName());
-         System.out.println(userService.getUserByCarModel("Volkswagen Beetle").get(0).getFirstName());
+         System.out.println(userService.getUserByCarSeries(1886).get(0));
+         System.out.println(userService.getUserByCarModel("Volkswagen Beetle").get(0));
 
 //      userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
 //      userService.add(new User("User2", "Lastname2", "user2@mail.ru"));

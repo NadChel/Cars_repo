@@ -55,7 +55,6 @@ public class Car {
         return "Car{" + "userId=" + userId +
                 ", model='" + model + '\'' +
                 ", series=" + series +
-                ", user=" + user +
                 '}';
     }
 }
