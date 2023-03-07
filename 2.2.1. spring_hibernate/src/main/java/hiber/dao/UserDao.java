@@ -12,9 +12,6 @@ public interface UserDao {
 
     User getUserById(long id);
 
-    List<User> getUserByCarModel(String model);
-
-    List<User> getUserByCarSeries(int series);
-
+    List<User> getUserByCarModelAndSeries(String model, int series);
     List<User> listUsers();
 }

@@ -13,8 +13,11 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
+   private final SessionFactory sessionFactory;
    @Autowired
-   private SessionFactory sessionFactory;
+   public UserDaoImp(SessionFactory sessionFactory) {
+      this.sessionFactory = sessionFactory;
+   }
 
    @Override
    public void add(User user) {
@@ -36,19 +39,21 @@ public class UserDaoImp implements UserDao {
       return session.get(User.class, id);
    }
    @Override
-   public List<User> getUserByCarModel(String model) {
+   public List<User> getUserByCarModelAndSeries(String model, int series) {
       Session session = sessionFactory.getCurrentSession();
-      return (List<User>) session.createQuery("from User where id = (select userId from Car where model = :m)")
+      return (List<User>) session.createQuery("from User where id = " +
+                      "(select userId from Car where model = :m and series = :s)")
               .setParameter("m", model)
-              .getResultList();
-   }
-   @Override
-   public List<User> getUserByCarSeries(int series) {
-      Session session = sessionFactory.getCurrentSession();
-      return (List<User>) session.createQuery("from User where id = (select userId from Car where series = :s)")
               .setParameter("s", series)
               .getResultList();
    }
+//   @Override
+//   public List<User> getUserByCarSeries(int series) {
+//      Session session = sessionFactory.getCurrentSession();
+//      return (List<User>) session.createQuery("from User where id = (select userId from Car where series = :s)")
+//              .setParameter("s", series)
+//              .getResultList();
+//   }
 
    @Override
    @SuppressWarnings("unchecked")
