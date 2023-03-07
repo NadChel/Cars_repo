@@ -28,11 +28,9 @@ public class UserDaoImp implements UserDao {
     @Override
     public void setCarById(long id, Car car) {
         Session session = sessionFactory.getCurrentSession();
-//      session.beginTransaction();
         User user = session.get(User.class, id);
         car.setUser(user);
         user.setCar(car);
-//      session.getTransaction().commit();
     }
 
     @Override
@@ -50,13 +48,6 @@ public class UserDaoImp implements UserDao {
                 .setParameter("s", series)
                 .getResultList();
     }
-//   @Override
-//   public List<User> getUserByCarSeries(int series) {
-//      Session session = sessionFactory.getCurrentSession();
-//      return (List<User>) session.createQuery("from User where id = (select userId from Car where series = :s)")
-//              .setParameter("s", series)
-//              .getResultList();
-//   }
 
     @Override
     @SuppressWarnings("unchecked")
